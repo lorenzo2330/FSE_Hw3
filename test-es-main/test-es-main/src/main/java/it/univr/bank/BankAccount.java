@@ -1,21 +1,21 @@
 package it.univr.bank;
 
+import java.util.ArrayList;
+
 public class BankAccount {
 
-    int[] transactions;
-    int lastMove;
+    ArrayList<Integer> transactions;
 
-    public BankAccount(){
-        lastMove = 0;
-        transactions = new int[1024];
-    }
+    public BankAccount(){ transactions = new ArrayList<Integer>(); }
 
-    public void deposit (int value){
-        transactions[lastMove++] = value;
-    }
+    public void deposit (int value){ transactions.add(value); }
 
-    public void withdraw (int value){
-        transactions[lastMove++] = -value;
+    public void withdraw (int value){ transactions.add(-value); }
+
+    public int balance(){
+        int b = 0;
+        for(int t : transactions){ b += t; }
+        return b;
     }
 
 }
